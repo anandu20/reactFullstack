@@ -8,26 +8,27 @@ function App() {
     const [task,setTask]=useState('');
     const [todo,setTodo]=useState([]);
     const addTask=async()=>{
-      if (task.trim()){
+      console.log(task);
+      
         const res=  await fetch('http://localhost:3000/api/addtodo',
           {
-
           method:"POST",
-          headers:{"Content-Type":"Application/json"},
+          headers:{"Content-Type":"application/json"},
           body:JSON.stringify({task})
 
         }
       )
       const data =await res.json();
+      console.log(data);
       res.status==201?alert(data.msg):alert(data.msg)
       getTodos();
-
-      }
     }
     const getTodos=async()=>{
       const res=await fetch ('http://localhost:3000/api/gettodos')
-      const dats=res.json()
+      const data=await res.json();
       if(res.status==200){
+        console.log(data);
+        
         setTodo([...data])  //copy all todo data
       }
       else{

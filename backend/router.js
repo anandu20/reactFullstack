@@ -1,5 +1,5 @@
 import { Router } from "express";
-import * as td from "./requestHandler.js";
+import * as td from "./requesthandler.js";
 const router=Router();
 router.route("/gettodos").get(td.getTodos);
 router.route("/addtodo").post(td.addTodo);
